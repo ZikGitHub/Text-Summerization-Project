@@ -1,4 +1,5 @@
 from textSummerizer.pipeline.stage_01_data_ingestion import DataIngestionTrainingPipeline
+from textSummerizer.pipeline.stage_02_data_validation import DataValidationTrainingPipeline
 from textSummerizer.logging import logger
 
 
@@ -8,6 +9,19 @@ try:
     logger.info(f">>> stage {STAGE_NAME} started <<<")
     data_ingestion = DataIngestionTrainingPipeline()
     data_ingestion.main()
+    logger.info(f">>> stage {STAGE_NAME} completed <<< \n\n ===x")
+
+except Exception as e:
+    logger.exception(e)
+    raise 
+
+
+STAGE_NAME = "Data Validation stage"
+
+try:
+    logger.info(f">>> stage {STAGE_NAME} started <<<")
+    data_validation = DataValidationTrainingPipeline()
+    data_validation.main()
     logger.info(f">>> stage {STAGE_NAME} completed <<< \n\n ===x")
 
 except Exception as e:
